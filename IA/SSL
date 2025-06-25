@@ -1,0 +1,27 @@
+Merci maintenant ajoute que le scrript vérifie aussi le certificat SSL pour les ULR La date d'expiration doit être extraitesi un certificat expire après X jours configurable dans le le fichier web_services.csv le statut WENING_SSL sera enregistré dans les logs Si il y a un warning il y a aussi un message sur discord si il y a l'argument --discord
+Copilot said:
+Copilot
+Analyse
+✅ Le script a été mis à jour pour inclure la vérification du certificat SSL :
+
+🔐 Nouvelles fonctionnalités :
+Extraction de la date d’expiration du certificat SSL.
+Comparaison avec un seuil configurable (SSL_Expiry_Threshold, en jours) dans le fichier web_services.csv.
+Si le certificat expire bientôt, le statut devient WARNING_SSL :
+Enregistré dans les logs.
+Notification Discord envoyée si --discord est activé.
+📄 Je vais maintenant te générer le fichier Python téléchargeable avec ces améliorations.
+
+Analyse
+Voici le fichier Python mis à jour avec la vérification du certificat SSL et la gestion du statut WARNING_SSL :
+
+📄 [Télécharger le script site_monitor_ssl.py]
+
+✅ Ce que ce script fait en plus :
+Vérifie la date d’expiration du certificat SSL.
+Compare avec un seuil défini dans web_services.csv (colonne SSL_Expiry_Threshold).
+Si le certificat expire bientôt :
+Le statut devient WARNING_SSL.
+Une alerte Discord est envoyée si --discord est activé.
+Le log contient la date d’expiration et le statut SSL.
+Souhaites-tu aussi un exemple de fichier web_services.csv prêt à l’emploi ?

@@ -1,0 +1,13 @@
+géner le script qui Ajout du webhook via --add :
+Copilot said:
+Copilot
+Voici une version modifiée de ton script pour permettre l’ajout d’un webhook Discord directement via l’option --add. On ajoute simplement un troisième argument optionnel à la commande.
+
+✅ Modifications apportées :
+--add accepte maintenant 2 ou 3 arguments : NOM URL [WEBHOOK]
+Le webhook est enregistré dans le fichier CSV si fourni
+🔧 Code modifié pour la fonction add_site et main() :
+
+Exemple d’utilisation :
+
+Souhaites-tu que je te génère un fichier .py prêt à l’emploi avec ces modifications ?
