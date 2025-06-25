@@ -1,3 +1,8 @@
+# ============================================
+# Commentaires générés par Copilot
+# Script de surveillance de services web
+# ============================================
+
 import csv
 import requests
 import argparse
@@ -7,25 +12,30 @@ import ssl
 import socket
 from datetime import datetime, timedelta
 
+# Fichier de configuration contenant les services à surveiller
 CONFIG_FILE = 'web_services.csv'
 
+# Crée le fichier de configuration s'il n'existe pas
 def create_config_file():
     if not os.path.exists(CONFIG_FILE):
         with open(CONFIG_FILE, 'w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['Name', 'URL', 'Webhook', 'SSL_Expiry_Threshold'])
 
+# Lit le fichier de configuration et retourne la liste des services
 def read_config_file():
     with open(CONFIG_FILE, 'r') as file:
         reader = csv.DictReader(file)
         return list(reader)
 
+# Ajoute un nouveau site au fichier de configuration
 def add_site(name, url, webhook="", ssl_expiry_threshold=30):
     with open(CONFIG_FILE, 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([name, url, webhook, ssl_expiry_threshold])
     print(f"Ajouté : {name} -> {url} (Webhook: {webhook if webhook else 'Aucun'}, SSL Expiry Threshold: {ssl_expiry_threshold} jours)")
 
+# Supprime un site du fichier de configuration
 def remove_site(name):
     sites = read_config_file()
     with open(CONFIG_FILE, 'w', newline='') as file:
@@ -36,6 +46,7 @@ def remove_site(name):
                 writer.writerow([site['Name'], site['URL'], site.get('Webhook', ''), site.get('SSL_Expiry_Threshold', 30)])
     print(f"Supprimé : {name}")
 
+# Affiche la liste des sites configurés
 def list_sites():
     sites = read_config_file()
     if not sites:
@@ -43,12 +54,19 @@ def list_sites():
     for site in sites:
         print(f"{site['Name']} -> {site['URL']} (Webhook: {site.get('Webhook', 'Aucun')}, SSL Expiry Threshold: {site.get('SSL_Expiry_Threshold', 30)} jours)")
 
+# ============================================
+# Webhook Discord
+# Aide de l'IA
+# ============================================
+
+# Envoie une notification à un webhook Discord
 def send_discord_notification(webhook_url, message):
     try:
         requests.post(webhook_url, json={"content": message})
     except Exception as e:
         print(f"Erreur lors de l'envoi Discord : {e}")
 
+# Vérifie la date d'expiration du certificat SSL
 def check_ssl_expiry(hostname, threshold_days):
     context = ssl.create_default_context()
     with socket.create_connection((hostname, 443)) as sock:
@@ -61,6 +79,12 @@ def check_ssl_expiry(hostname, threshold_days):
             else:
                 return False, expiry_date
 
+# ============================================
+# Logs et Status.json
+# Aide de l'IA
+# ============================================
+
+# Vérifie l'état des sites et enregistre les résultats
 def check_sites(discord_enabled=False):
     sites = read_config_file()
 
@@ -126,6 +150,7 @@ def check_sites(discord_enabled=False):
 
     print(f"\n✅ Fichier de log généré : {log_file}")
 
+# Exporte l'historique des vérifications pour un ou plusieurs sites
 def export_site_history(site_names):
     log_dir = "log"
     export_dir = "export"
@@ -148,6 +173,7 @@ def export_site_history(site_names):
 
     print(f"\n✅ Rapport exporté : {export_file}")
 
+# Point d'entrée principal du script
 def main():
     parser = argparse.ArgumentParser(description="Surveillance de services web")
     parser.add_argument('--add', nargs='+', help="Ajouter un site (optionnel : webhook, SSL expiry threshold)")
@@ -182,4 +208,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
