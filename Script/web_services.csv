@@ -1,3 +1,4 @@
 Name,URL,Webhook,SSL_Expiry_Threshold
 CPLR,https://vm.cplr.fr,https://discord.com/api/webhooks/1367063491214573579/1VOgcpbps3ewEySe-XfJhNRbNQPORZ6ynxkLJO8GhgTm18VeSt9en4PeLApJgLmlNdCN,30
 CUD,https://www.communaute-urbaine-dunkerque.fr/,https://discord.com/api/webhooks/1367063491214573579/1VOgcpbps3ewEySe-XfJhNRbNQPORZ6ynxkLJO8GhgTm18VeSt9en4PeLApJgLmlNdCN,30
+CPLR2,https://vm.cplr.fr/admin,https://discord.com/api/webhooks/1367063491214573579/1VOgcpbps3ewEySe-XfJhNRbNQPORZ6ynxkLJO8GhgTm18VeSt9en4PeLApJgLmlNdCN,300
